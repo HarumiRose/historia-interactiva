@@ -1,0 +1,94 @@
+# Guarda este archivo como: admin/config.yml
+# (Crea una carpeta "admin" y dentro pon "config.yml")
+
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "scenes"
+    label: "Escenas de la Historia"
+    folder: "content/scenes"
+    create: true
+    slug: "{{chapter}}-{{order}}"
+    fields:
+      - {label: "Capítulo", name: "chapter", widget: "number", min: 1, max: 100}
+      - {label: "Orden en el capítulo", name: "order", widget: "number", min: 1}
+      - {label: "Texto de la escena", name: "text", widget: "markdown"}
+      - {label: "Texto del botón", name: "buttonText", widget: "string", default: "Continuar"}
+      
+      - label: "Actualizaciones"
+        name: "updates"
+        widget: "object"
+        fields:
+          - {label: "Estado de ánimo", name: "mood", widget: "string", required: false}
+          - {label: "Nivel de energía", name: "energy", widget: "string", required: false}
+          
+          - label: "Mensajes nuevos"
+            name: "phoneMessages"
+            widget: "list"
+            required: false
+            fields:
+              - {label: "Contacto", name: "contact", widget: "select", options: ["umi", "mama", "aiko", "papa"]}
+              - {label: "Mensaje", name: "message", widget: "text"}
+              - {label: "Hora", name: "time", widget: "string", default: "Ahora"}
+          
+          - label: "Nueva entrada del diario"
+            name: "diaryEntry"
+            widget: "object"
+            required: false
+            fields:
+              - {label: "Fecha", name: "date", widget: "string"}
+              - {label: "Contenido", name: "content", widget: "markdown"}
+          
+          - label: "Nuevas notas"
+            name: "notes"
+            widget: "list"
+            required: false
+            fields:
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Contenido", name: "content", widget: "text"}
+              - {label: "Color", name: "color", widget: "select", options: ["#ff9800", "#e91e63", "#9c27b0"]}
+          
+          - label: "Nuevas búsquedas"
+            name: "searches"
+            widget: "list"
+            required: false
+            fields:
+              - {label: "Búsqueda", name: "query", widget: "string"}
+              - {label: "Tiempo", name: "time", widget: "string"}
+          
+          - label: "Actualizar timeline"
+            name: "timeline"
+            widget: "list"
+            required: false
+            fields:
+              - {label: "Hora", name: "time", widget: "string"}
+              - {label: "Evento", name: "event", widget: "string"}
+              - {label: "Es evento actual", name: "current", widget: "boolean", default: false}
+
+  - name: "personajes"
+    label: "Configuración de Personajes"
+    files:
+      - label: "Izuku Midoriya"
+        name: "izuku"
+        file: "content/characters/izuku.json"
+        fields:
+          - {label: "Nombre", name: "name", widget: "string"}
+          - {label: "Avatar URL", name: "avatar", widget: "image"}
+          - {label: "Icono emoji", name: "icon", widget: "string"}
+          - {label: "Estado inicial", name: "mood", widget: "string"}
+          - {label: "Energía inicial", name: "energy", widget: "string"}
+      
+      - label: "Harumi"
+        name: "harumi"
+        file: "content/characters/harumi.json"
+        fields:
+          - {label: "Nombre", name: "name", widget: "string"}
+          - {label: "Avatar URL", name: "avatar", widget: "image"}
+          - {label: "Icono emoji", name: "icon", widget: "string"}
+          - {label: "Estado inicial", name: "mood", widget: "string"}
+          - {label: "Energía inicial", name: "energy", widget: "string"}
