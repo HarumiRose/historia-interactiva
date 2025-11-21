@@ -1,0 +1,27 @@
+{
+  "name": "Izuku Midoriya",
+  "avatar": "/images/izuku-avatar.jpg",
+  "icon": "💚",
+  "color": "linear-gradient(135deg, #4caf50, #8bc34a)",
+  "mood": "Preocupado",
+  "energy": "Desesperado",
+  "phoneBg": "/images/izuku-phone-bg.jpg",
+  "inventory": [],
+  "contacts": [],
+  "diary": [],
+  "currentLocation": {
+    "name": "U.A. High School",
+    "detail": "Edificio Principal",
+    "icon": "🏫"
+  },
+  "locationHistory": [],
+  "savedLocations": [],
+  "wallet": {
+    "cash": "¥3450",
+    "suica": "¥1200",
+    "expenses": []
+  },
+  "notes": [],
+  "searches": [],
+  "timeline": []
+}
