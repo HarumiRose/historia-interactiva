@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="stylesheet" href="styles.css"> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historia Interactiva</title>
+</head>
+  
+<body>
+  
+<header>
+  <div style="display: flex; align-items: center; gap: 20px;">
+    <!-- NUEVO: Botón selector de personaje -->
+    <button id="character-selector-btn" onclick="toggleCharacterSelector()">
+      <span id="current-character-icon">👤</span>
+    </button>
+    
+    <div id="cap-info">Capítulo 1 — El Encuentro</div>
+    
+    <!-- Afecto movido aquí -->
+    <div id="affinity-header">
+      <span id="affinity-emoji">💗</span>
+      <span id="affinity-stage">Pareja</span>
+    </div>
+  </div>
+  
+  <div id="nav-buttons">
+    <button id="prev-btn" onclick="previousChapter()">← Anterior</button>
+    <button id="next-btn" onclick="nextChapter()" style="display: none;">Siguiente →</button>
+    <button onclick="openChapterModal()">Capítulos</button>
+  </div>
+</header>
+  
+<!-- NUEVO: Panel selector de personajes -->
+<div id="character-selector-panel">
+  <div class="character-option" onclick="selectCharacter('izuku')">
+    <div class="char-avatar izuku-color">I</div>
+    <div class="char-info">
+      <strong>Izuku Midoriya</strong>
+      <small>Deku • U.A. Clase 1-A</small>
+    </div>
+  </div>
+  
+  <div class="character-option" onclick="selectCharacter('harumi')">
+    <div class="char-avatar harumi-color">H</div>
+    <div class="char-info">
+      <strong>Harumi</strong>
+      <small>Tu personaje personalizado</small>
+    </div>
+  </div>
+</div>
+
+<!-- Botón para mostrar/ocultar sidebar -->
+<button id="sidebar-toggle" onclick="toggleSidebar()">
+  <span id="sidebar-arrow">◀</span>
+</button>
+
+<div id="sidebar">
+  <!-- Perfil del personaje -->
+  <div id="character-profile">
+    <div class="profile-avatar">U</div>
+    <div class="profile-name">Izuku Midoriya</div>
+  </div>
+
+<!-- Estados -->
+<div id="stats-panel">
+  <div class="stat-box-small">
+    <div class="stat-label-small">Estado:</div>
+    <div id="mood-state" class="stat-text-small">Feliz</div>
+  </div>
+  
+  <div class="stat-box-small">
+    <div class="stat-label-small">Ánimo:</div>
+    <div id="energy-state" class="stat-text-small">Tranquilo</div>
+  </div>
+</div>
+
+  <!-- Botones del menú -->
+  <button onclick="openPanel('telefono', this)">
+    <span>📱</span> Teléfono
+  </button>
+  <button onclick="openPanel('diario', this)">
+    <span>📔</span> Diario
+  </button>
+  <button onclick="openPanel('inventario', this)">
+    <span>🎒</span> Inventario
+  </button>
+  <button onclick="openPanel('timeline', this)">
+    <span>⏰</span> Timeline
+  </button>
+</div>
+
+  <!-- Paneles dinámicos -->
+<div id="telefono" class="panel">
+    <div id="phone-lockscreen">
+      <div class="phone-time-large">15:42</div>
+      <div class="phone-date-large">Lunes, 15 de Abril</div>
+      
+      <div class="phone-apps-grid">
+        <div class="phone-app" onclick="openPhoneApp('mensajes')">
+          <div class="app-icon mensajes-icon">💬</div>
+          <div class="app-name">Mensajes</div>
+        </div>
+        
+        <div class="phone-app" onclick="openPhoneApp('llamadas')">
+          <div class="app-icon llamadas-icon">📞</div>
+          <div class="app-name">Llamadas</div>
+        </div>
+        
+        <div class="phone-app" onclick="openPhoneApp('mapa')">
+          <div class="app-icon mapa-icon">🗺️</div>
+          <div class="app-name">Mapa</div>
+        </div>
+        
+        <div class="phone-app" onclick="openPhoneApp('cartera')">
+          <div class="app-icon cartera-icon">💳</div>
+          <div class="app-name">Cartera</div>
+        </div>
+        
+        <div class="phone-app" onclick="openPhoneApp('notas')">
+          <div class="app-icon notas-icon">📝</div>
+          <div class="app-name">Notas</div>
+        </div>
+        
+        <div class="phone-app" onclick="openPhoneApp('busqueda')">
+          <div class="app-icon busqueda-icon">🔍</div>
+          <div class="app-name">Búsqueda</div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Vista de aplicación abierta -->
+    <div id="phone-app-view" style="display: none;">
+      <div class="phone-app-header">
+        <button onclick="closePhoneApp()" class="phone-back-btn">← Atrás</button>
+        <span id="phone-app-title"></span>
+      </div>
+      
+      <div id="phone-app-content"></div>
+    </div>
+
+    <!-- TABS OCULTOS-->
+    <div id="mensajes-tab" class="tab-content" style="display: none;">
+      <div id="contact-list">
+        <div class="panel-item contact-item" onclick="openChat('umi')">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="contact-avatar umi-avatar">💗</div>
+            <div style="flex: 1;">
+              <strong>Umi-chan 💕</strong><br>
+              <small style="color: #999;">Te amo Izu-kun 💚</small>
+            </div>
+            <span style="color: #999; font-size: 11px;">Ahora</span>
+          </div>
+        </div>
+        <div class="panel-item contact-item" onclick="openChat('mama')">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="contact-avatar mama-avatar">M</div>
+            <div style="flex: 1;">
+              <strong>Mamá</strong><br>
+              <small style="color: #999;">No olvides llamarme</small>
+            </div>
+            <span style="color: #999; font-size: 11px;">Ayer</span>
+          </div>
+        </div>
+      </div>
+      
+      <div id="chat-view" style="display: none;">
+        <div class="chat-header">
+          <button onclick="closeChat()" class="back-btn">←</button>
+          <div id="chat-avatar" class="contact-avatar"></div>
+          <strong id="chat-name"></strong>
+        </div>
+        <div id="chat-messages"></div>
+      </div>
+    </div>
+
+    <div id="llamadas-tab" class="tab-content" style="display: none;">
+      <h4 class="section-title">📞 Historial de llamadas</h4>
+      
+      <div class="call-item recent">
+        <div class="contact-avatar umi-avatar">💗</div>
+        <div style="flex: 1;">
+          <strong style="color: #ff5fa2;">Umi-chan 💕</strong><br>
+          <small>📞 Llamada entrante · 23 min</small>
+        </div>
+        <span class="call-time">12:15</span>
+      </div>
+
+      <div class="call-item">
+        <div class="contact-avatar umi-avatar">💗</div>
+        <div style="flex: 1;">
+          <strong>Umi-chan 💕</strong><br>
+          <small>📱 Llamada saliente · 15 min</small>
+        </div>
+        <span class="call-time">Ayer</span>
+      </div>
+
+      <div class="call-item">
+        <div class="contact-avatar mama-avatar">M</div>
+        <div style="flex: 1;">
+          <strong>Mamá</strong><br>
+          <small>📞 Llamada entrante · 8 min</small>
+        </div>
+        <span class="call-time">Ayer</span>
+      </div>
+
+      <div class="call-item">
+        <div class="contact-avatar kacchan-avatar">K</div>
+        <div style="flex: 1;">
+          <strong>Kacchan</strong><br>
+          <small>❌ Llamada perdida</small>
+        </div>
+        <span class="call-time">2 días</span>
+      </div>
+    </div>
+
+    <div id="mapa-tab" class="tab-content" style="display: none;">
+      <div class="map-container">
+        <div class="location-marker">📍 U.A. High School</div>
+      </div>
+      <div style="margin-top: 15px;">
+        <h4 class="section-title">📍 Ubicación actual</h4>
+        <div class="location-current">
+          <strong>U.A. High School</strong><br>
+          <small>Edificio Principal - Aula 1-A</small>
+        </div>
+
+        <h4 class="section-title">🕐 Historial de ubicaciones</h4>
+        <div class="location-history">
+          <div class="location-item">
+            <span>🏫</span>
+            <div style="flex: 1;">
+              <strong>U.A. High School</strong><br>
+              <small>Ahora - 8:00 AM</small>
+            </div>
+          </div>
+          <div class="location-item">
+            <span>🏠</span>
+            <div style="flex: 1;">
+              <strong>Casa - Apartamento Midoriya</strong><br>
+              <small>7:45 AM - 7:00 AM</small>
+            </div>
+          </div>
+          <div class="location-item">
+            <span>🏖️</span>
+            <div style="flex: 1;">
+              <strong>Playa Takoba</strong><br>
+              <small>Ayer - 6:30 AM</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="cartera-tab" class="tab-content" style="display: none;">
+      <div class="wallet-item">
+        <span>💴 Efectivo</span>
+        <span class="wallet-amount">¥3,450</span>
+      </div>
+      <div class="wallet-item">
+        <span>🚇 Suica</span>
+        <span style="color: #4caf50; font-size: 14px;">¥1,200</span>
+      </div>
+      <div class="wallet-item">
+        <span>🔵 T-Point</span>
+        <span style="color: #2196f3; font-size: 14px;">850 pts</span>
+      </div>
+      <div class="wallet-item">
+        <span>🟠 Ponta</span>
+        <span style="color: #ff9800; font-size: 14px;">420 pts</span>
+      </div>
+      
+      <div class="expense-history">
+        <h4>📊 Historial de gastos</h4>
+        <div class="expense-item">
+          <span>🏪 Lawson - Almuerzo</span>
+          <span class="expense-negative">-¥580</span>
+        </div>
+        <div class="expense-item">
+          <span>🚇 Metro (Suica)</span>
+          <span class="expense-negative">-¥200</span>
+        </div>
+        <div class="expense-item">
+          <span>🏪 Family Mart - Bebida</span>
+          <span class="expense-negative">-¥150</span>
+        </div>
+        <div class="expense-item">
+          <span>📚 Librería - Revista</span>
+          <span class="expense-negative">-¥480</span>
+        </div>
+        <div class="expense-item">
+          <span>💰 Mesada semanal</span>
+          <span class="expense-positive">+¥2,000</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="busqueda-tab" class="tab-content" style="display: none;">
+  <h4 style="margin: 0 0 12px 0; color: #4caf50; font-size: 13px;">🔍 Historial de búsqueda</h4>
+  
+  <div style="font-size: 13px; color: #666;">
+    <div style="padding: 10px; background: #f5f5f5; border-radius: 6px; margin-bottom: 6px; border-left: 3px solid #4caf50;">
+      <div style="font-weight: 500; color: #333;">técnicas de control quirk para principiantes</div>
+      <small style="color: #999;">Hace 2 horas</small>
+    </div>
+    
+    <div style="padding: 10px; background: #f5f5f5; border-radius: 6px; margin-bottom: 6px;">
+      <div style="font-weight: 500; color: #333;">ideas de citas románticas en Musutafu</div>
+      <small style="color: #999;">Ayer 20:15</small>
+    </div>
+    
+    <div style="padding: 10px; background: #f5f5f5; border-radius: 6px; margin-bottom: 6px;">
+      <div style="font-weight: 500; color: #333;">cómo fortalecer músculos sin lastimarse</div>
+      <small style="color: #999;">Ayer 6:30</small>
+    </div>
+    
+    <div style="padding: 10px; background: #f5f5f5; border-radius: 6px; margin-bottom: 6px;">
+      <div style="font-weight: 500; color: #333;">historia de All Might primeras misiones</div>
+      <small style="color: #999;">2 días</small>
+    </div>
+    
+    <div style="padding: 10px; background: #f5f5f5; border-radius: 6px; margin-bottom: 6px;">
+      <div style="font-weight: 500; color: #333;">diferencia entre héroe Pro y héroe novato</div>
+      <small style="color: #999;">3 días</small>
+    </div>
+    
+    <div style="padding: 10px; background: #f5f5f5; border-radius: 6px; margin-bottom: 6px;">
+      <div style="font-weight: 500; color: #333;">qué regalar a tu novia en su cumpleaños</div>
+      <small style="color: #999;">1 semana</small>
+    </div>
+  </div>
+</div>
+  
+
+  <div id="inventario" class="panel">
+    <h3>🎒 Inventario</h3>
+    
+    <div class="panel-item">
+      <div class="inventory-item">
+        <div class="item-icon green-gradient">🎓</div>
+        <div style="flex: 1;">
+          <strong class="green-text">Carnet de U.A.</strong><br>
+          <small>Identificación oficial de estudiante</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-item">
+      <div class="inventory-item">
+        <div class="item-icon blue-gradient">📓</div>
+        <div style="flex: 1;">
+          <strong class="blue-text">Cuaderno de Análisis de Héroes</strong><br>
+          <small>N°13 - Lleno de notas y dibujos</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-item">
+      <div class="inventory-item">
+        <div class="item-icon orange-gradient">⚡</div>
+        <div style="flex: 1;">
+          <strong class="orange-text">Bebida Energética</strong><br>
+          <small>x2 - Para entrenamientos intensos</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-item">
+      <div class="inventory-item">
+        <div class="item-icon pink-gradient">📱</div>
+        <div style="flex: 1;">
+          <strong class="pink-text">Smartphone</strong><br>
+          <small>Con protector de All Might</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-item">
+      <div class="inventory-item">
+        <div class="item-icon purple-gradient">🩹</div>
+        <div style="flex: 1;">
+          <strong class="purple-text">Kit de Primeros Auxilios</strong><br>
+          <small>Básico - Cortesía de Recovery Girl</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-item locked">
+      <div class="inventory-item">
+        <div class="item-icon gray-bg">❓</div>
+        <div style="flex: 1;">
+          <strong>???</strong><br>
+          <small>🔒 Objeto no desbloqueado</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <main id="content">
+    <div id="story-content"></div>
+  </main>
+  
+  <!-- Panel de Diario -->
+<div id="diario" class="panel">
+  <h3>📔 Diario de Izuku</h3>
+  
+  <div class="diary-entry">
+    <div class="diary-date">21 de Noviembre</div>
+    <div class="diary-content">
+      <p><strong>Querido diario,</strong></p>
+      <p>Hoy fue un día increíble en U.A. El entrenamiento con All Might está dando resultados, puedo sentir que cada vez controlo mejor el One For All.</p>
+      <p>Umi-chan me mandó un mensaje muy lindo en el almuerzo... no puedo dejar de sonreír cuando pienso en ella 💚</p>
+    </div>
+  </div>
+  
+  <div class="diary-entry">
+    <div class="diary-date">20 de Noviembre</div>
+    <div class="diary-content">
+      <p>El examen de hoy fue más difícil de lo que pensaba. Kacchan estuvo especialmente competitivo, pero eso solo me motiva a esforzarme más.</p>
+      <p>Necesito analizar las técnicas del héroe Mirko para mi siguiente reporte.</p>
+    </div>
+  </div>
+  
+  <div class="diary-entry">
+    <div class="diary-date">18 de Noviembre</div>
+    <div class="diary-content">
+      <p>¡La cita con Umi-chan fue perfecta! Fuimos al nuevo café que abrió cerca de la escuela. Me puse tan nervioso que casi tiro mi bebida... pero ella solo se rió y me tomó de la mano.</p>
+      <p>Momentos como estos me recuerdan por qué quiero ser un héroe: para proteger a las personas que amo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Panel de Timeline -->
+<div id="timeline" class="panel">
+  <h3>⏰ Línea de Tiempo</h3>
+  
+  <div class="timeline-container">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-time">Ahora - 8:00 AM</div>
+        <div class="timeline-event current">
+          <strong>🏫 Clases en U.A.</strong><br>
+          <small>Aula 1-A - Clase de Héroes</small>
+        </div>
+      </div>
+    </div>
+    
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-time">7:45 AM</div>
+        <div class="timeline-event">
+          <strong>🚶 Camino a la escuela</strong><br>
+          <small>Encuentro con Uraraka y Iida</small>
+        </div>
+      </div>
+    </div>
+    
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-time">7:00 AM</div>
+        <div class="timeline-event">
+          <strong>🏠 Desayuno en casa</strong><br>
+          <small>Mamá preparó mi comida favorita</small>
+        </div>
+      </div>
+    </div>
+    
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-time">6:00 AM</div>
+        <div class="timeline-event">
+          <strong>🏃 Entrenamiento matutino</strong><br>
+          <small>Playa Takoba - 50 flexiones</small>
+        </div>
+      </div>
+    </div>
+    
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-time">Ayer 20:30</div>
+        <div class="timeline-event">
+          <strong>💕 Videollamada con Umi-chan</strong><br>
+          <small>Conversamos por 1 hora</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Modal de capítulos -->
+  <div id="chapter-modal">
+    <div class="modal-content">
+      <h2>Selecciona un Capítulo</h2>
+      <div id="chapter-list"></div>
+      <button onclick="closeChapterModal()" class="modal-close-btn">Cerrar</button>
+    </div>
+  </div>
+ <script src="script.js"></script>
+</body>
+</html>
