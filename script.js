@@ -176,9 +176,13 @@ function showNextParagraph() {
 }
 
 function applyUpdates(updates) {
-  if (!currentCharacter || !updates) return;
+  if (!updates) return;
   
-  const char = charactersData[currentCharacter];
+  // Usar el personaje especificado en updates, o el actual por defecto
+  const targetCharId = updates.character || currentCharacter;
+  if (!targetCharId) return;
+  
+  const char = charactersData[targetCharId];
   
   // Actualizar estado y energía
   if (updates.mood) {
@@ -256,6 +260,43 @@ function applyUpdates(updates) {
     
     updatePhoneWallet(char.wallet);
   }
+  // Si actualizamos un personaje diferente al actual, solo guardamos los cambios
+  // Si es el personaje actual, actualizamos la UI también
+  if (targetCharId === currentCharacter) {
+    if (updates.mood || updates.energy) {
+      document.getElementById('mood-state').textContent = char.mood;
+      document.getElementById('energy-state').textContent = char.energy;
+    }
+    
+    if (updates.phoneMessages) {
+      updateContacts(char.contacts);
+      updatePhoneCalls(char.contacts);
+    }
+    
+    if (updates.diaryEntry) {
+      updateDiary(char.diary);
+    }
+    
+    if (updates.notes) {
+      updatePhoneNotes(char.notes);
+    }
+    
+    if (updates.searches) {
+      updatePhoneSearches(char.searches);
+    }
+    
+    if (updates.timeline) {
+      updateTimeline(char.timeline);
+    }
+    
+    if (updates.location) {
+      updatePhoneMap(char.currentLocation, char.locationHistory, char.savedLocations);
+    }
+    
+    if (updates.transaction) {
+      updatePhoneWallet(char.wallet);
+    }
+  }
 }
 
 // ========== FUNCIONES DE ACTUALIZACIÓN DE UI ==========
@@ -286,49 +327,6 @@ function updateContacts(contacts) {
   let html = '';
   
   contacts.forEach(contact => {
-function updatePhoneCalls(contacts) {
-  const llamadasTab = document.getElementById('llamadas-tab');
-  
-  let html = '<h4 class="section-title">📞 Historial de llamadas</h4>';
-  
-  // Recopilar TODAS las llamadas de TODOS los contactos
-  let allCalls = [];
-  contacts.forEach(contact => {
-    if (contact.calls && contact.calls.length > 0) {
-      contact.calls.forEach(call => {
-        allCalls.push({
-          ...call,
-          contactName: contact.name,
-          contactAvatar: contact.avatar
-        });
-      });
-    }
-  });
-  
-  // Ordenar por reciente
-  allCalls.sort((a, b) => (b.recent ? 1 : 0) - (a.recent ? 1 : 0));
-  
-  // Renderizar llamadas
-  allCalls.forEach(call => {
-    const avatarHtml = call.contactAvatar.startsWith('/images/') 
-      ? `<img src="${call.contactAvatar}" alt="${call.contactName}">`
-      : call.contactAvatar;
-    
-    html += `
-      <div class="call-item ${call.recent ? 'recent' : ''}">
-        <div class="contact-avatar">${avatarHtml}</div>
-        <div style="flex: 1;">
-          <strong ${call.recent ? 'style="color: #ff5fa2;"' : ''}>${call.contactName}</strong><br>
-          <small>${call.type}${call.duration ? ' · ' + call.duration : ''}</small>
-        </div>
-        <span class="call-time">${call.time}</span>
-      </div>
-    `;
-  });
-  
-  llamadasTab.innerHTML = html;
-}
-    
     const avatarHtml = contact.avatar.startsWith('/images/') 
       ? `<img src="${contact.avatar}" alt="${contact.name}">`
       : contact.avatar;
