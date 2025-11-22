@@ -46,9 +46,41 @@ async function loadStoryScenes() {
 // ========== INICIALIZACIÓN ==========
 
 async function init() {
+  // Cargar datos de ambos personajes
+  await loadCharacterData('izuku');
+  await loadCharacterData('harumi');
+  
+  // Crear opciones del selector dinámicamente
+  await createCharacterSelector();
+  
   await loadStoryScenes();
   updatePhoneTime();
   setInterval(updatePhoneTime, 60000);
+}
+
+async function createCharacterSelector() {
+  const panel = document.getElementById('character-selector-panel');
+  let html = '';
+  
+  // Iterar sobre los personajes cargados
+  for (const charId in charactersData) {
+    const char = charactersData[charId];
+    
+    const avatarHtml = char.avatar && char.avatar.startsWith('/images/') 
+      ? `<img src="${char.avatar}" alt="${char.name}" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover;">`
+      : `<div class="char-avatar" style="background: ${char.color};">${char.name[0]}</div>`;
+    
+    html += `
+      <div class="character-option" onclick="selectCharacter('${charId}')">
+        ${avatarHtml}
+        <div class="char-info">
+          <strong>${char.name}</strong>
+        </div>
+      </div>
+    `;
+  }
+  
+  panel.innerHTML = html;
 }
 
 // ========== FUNCIONES DE PERSONAJES ==========
@@ -259,43 +291,6 @@ function applyUpdates(updates) {
     char.wallet.cash = `¥${currentCash + amount}`;
     
     updatePhoneWallet(char.wallet);
-  }
-  // Si actualizamos un personaje diferente al actual, solo guardamos los cambios
-  // Si es el personaje actual, actualizamos la UI también
-  if (targetCharId === currentCharacter) {
-    if (updates.mood || updates.energy) {
-      document.getElementById('mood-state').textContent = char.mood;
-      document.getElementById('energy-state').textContent = char.energy;
-    }
-    
-    if (updates.phoneMessages) {
-      updateContacts(char.contacts);
-      updatePhoneCalls(char.contacts);
-    }
-    
-    if (updates.diaryEntry) {
-      updateDiary(char.diary);
-    }
-    
-    if (updates.notes) {
-      updatePhoneNotes(char.notes);
-    }
-    
-    if (updates.searches) {
-      updatePhoneSearches(char.searches);
-    }
-    
-    if (updates.timeline) {
-      updateTimeline(char.timeline);
-    }
-    
-    if (updates.location) {
-      updatePhoneMap(char.currentLocation, char.locationHistory, char.savedLocations);
-    }
-    
-    if (updates.transaction) {
-      updatePhoneWallet(char.wallet);
-    }
   }
 }
 
@@ -678,3 +673,4 @@ document.addEventListener('click', (e) => {
 
 // ========== INICIALIZAR AL CARGAR ==========
 init();
+
