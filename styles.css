@@ -35,7 +35,11 @@ position: fixed;
   font-weight: 600;
   color: #ffffff;
 }
-
+#nav-buttons {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
 #nav-buttons button {
   background: #fff;
   border: 1px solid #ffc9e3;
@@ -1264,6 +1268,14 @@ body.sidebar-hidden .panel {
   cursor: pointer;
   transition: all 0.3s ease;
   margin-bottom: 8px;
+}
+
+.character-option > img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 .character-option:last-child {
