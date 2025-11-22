@@ -1,27 +1,83 @@
 {
-  "timeline": [],
-  "notes": [],
-  "color": "linear-gradient(135deg, #9c27b0, #ba68c8)",
-  "diary": [],
-  "energy": "Energética",
   "name": "Harumi Rose",
+  "avatar": "/images/harumi-avatar.jpg",
+  "icon": "💙",
+  "color": "linear-gradient(135deg, #9c27b0, #ba68c8)",
+  "mood": "Alegre",
+  "energy": "Energética",
+  "phoneBg": "/images/harumi-phone-bg.jpg",
+  "inventory": [
+    {
+      "icon": "/images/horquilla.png",
+      "name": "Horquilla Especial",
+      "description": "Regalo de mi mejor amiga"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "aiko",
+      "name": "Aiko-chan 🌸",
+      "avatar": "/images/aiko-avatar.jpg",
+      "lastMessage": "Nos vemos mañana! 💕",
+      "time": "Ahora",
+      "messages": [
+        {
+          "sender": "contact",
+          "text": "Hola Haru! 🌸",
+          "time": "14:30"
+        }
+      ],
+      "calls": [
+        {
+          "type": "📞 Llamada entrante",
+          "duration": "45 min",
+          "time": "14:20",
+          "recent": true
+        }
+      ]
+    },
+    {
+      "id": "papa",
+      "name": "Papá",
+      "avatar": "/images/papa-avatar.jpg",
+      "lastMessage": "Cuídate mucho hija",
+      "time": "Ayer",
+      "messages": [
+        {
+          "sender": "contact",
+          "text": "Hija, cómo va todo?",
+          "time": "Ayer 19:00"
+        }
+      ],
+      "calls": [
+        {
+          "type": "📞 Llamada entrante",
+          "duration": "12 min",
+          "time": "Ayer",
+          "recent": false
+        }
+      ]
+    }
+  ],
+  "diary": [
+    {
+      "date": "21 de Noviembre",
+      "content": "<p><strong>Querido diario,</strong></p><p>Hoy tuve un entrenamiento increíble...</p>"
+    }
+  ],
   "currentLocation": {
     "name": "U.A. High School",
     "detail": "Gimnasio Gamma",
     "icon": "🏫"
   },
-  "contacts": [],
-  "phoneBg": "/images/harumi-phone-bg.jpg",
-  "searches": [],
+  "locationHistory": [],
   "savedLocations": [],
-  "mood": "Alegre",
-  "icon": "💙",
-  "avatar": "/images/harumi.png",
   "wallet": {
     "cash": "¥4200",
     "suica": "¥1500",
     "expenses": []
   },
-  "inventory": [],
-  "locationHistory": []
+  "notes": [],
+  "searches": [],
+  "timeline": []
 }
