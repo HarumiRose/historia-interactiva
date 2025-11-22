@@ -1,27 +1,140 @@
 {
-  "timeline": [],
-  "notes": [],
-  "color": "linear-gradient(135deg, #4caf50, #8bc34a)",
-  "diary": [],
-  "energy": "Desesperado",
   "name": "Izuku Midoriya",
+  "avatar": "/images/izuku-avatar.jpg",
+  "icon": "💚",
+  "color": "linear-gradient(135deg, #4caf50, #8bc34a)",
+  "mood": "Preocupado",
+  "energy": "Desesperado",
+  "phoneBg": "/images/izuku-phone-bg.jpg",
+  "inventory": [
+    {
+      "icon": "/images/carnet-ua.png",
+      "name": "Carnet de U.A.",
+      "description": "Identificación oficial de estudiante"
+    },
+    {
+      "icon": "/images/cuaderno.png",
+      "name": "Cuaderno de Análisis",
+      "description": "N°13 - Lleno de notas"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "umi",
+      "name": "Umi-chan 💕",
+      "avatar": "/images/umi-avatar.jpg",
+      "lastMessage": "Te amo Izu-kun 💚",
+      "time": "Ahora",
+      "messages": [
+        {
+          "sender": "contact",
+          "text": "Buenos días Izu-kun! 💚",
+          "time": "7:30"
+        },
+        {
+          "sender": "me",
+          "text": "Buenos días Umi-chan! 💕",
+          "time": "7:32"
+        }
+      ],
+      "calls": [
+        {
+          "type": "📞 Llamada entrante",
+          "duration": "23 min",
+          "time": "12:15",
+          "recent": true
+        },
+        {
+          "type": "📱 Llamada saliente",
+          "duration": "15 min",
+          "time": "Ayer",
+          "recent": false
+        }
+      ]
+    },
+    {
+      "id": "mama",
+      "name": "Mamá",
+      "avatar": "/images/mama-avatar.jpg",
+      "lastMessage": "No olvides llamarme",
+      "time": "Ayer",
+      "messages": [
+        {
+          "sender": "contact",
+          "text": "Hola cariño!",
+          "time": "Ayer 18:20"
+        }
+      ],
+      "calls": [
+        {
+          "type": "📞 Llamada entrante",
+          "duration": "8 min",
+          "time": "Ayer",
+          "recent": false
+        }
+      ]
+    }
+  ],
+  "diary": [
+    {
+      "date": "21 de Noviembre",
+      "content": "<p><strong>Querido diario,</strong></p><p>Hoy fue increíble...</p>"
+    }
+  ],
   "currentLocation": {
     "name": "U.A. High School",
-    "detail": "Edificio Principal",
+    "detail": "Edificio Principal - Aula 1-A",
     "icon": "🏫"
   },
-  "contacts": [],
-  "phoneBg": "/images/izuku-phone-bg.jpg",
-  "searches": [],
-  "savedLocations": [],
-  "mood": "Preocupado",
-  "icon": "💚",
-  "avatar": "/images/izuku.png",
+  "locationHistory": [
+    {
+      "name": "Casa - Apartamento Midoriya",
+      "detail": "7:45 AM - 7:00 AM",
+      "icon": "🏠"
+    }
+  ],
+  "savedLocations": [
+    {
+      "name": "Playa Takoba",
+      "address": "Costa este de Musutafu",
+      "icon": "🏖️"
+    }
+  ],
   "wallet": {
     "cash": "¥3450",
     "suica": "¥1200",
-    "expenses": []
+    "tpoint": "850 pts",
+    "ponta": "420 pts",
+    "expenses": [
+      {
+        "name": "Lawson - Almuerzo",
+        "amount": "-¥580",
+        "type": "negative"
+      },
+      {
+        "name": "Mesada semanal",
+        "amount": "+¥2000",
+        "type": "positive"
+      }
+    ]
   },
-  "inventory": [],
-  "locationHistory": []
+  "notes": [
+    {
+      "title": "Recordatorio",
+      "content": "Estudiar para el examen de mañana"
+    }
+  ],
+  "searches": [
+    {
+      "query": "técnicas de control quirk para principiantes",
+      "time": "Hace 2 horas"
+    }
+  ],
+  "timeline": [
+    {
+      "time": "Ahora - 8:00 AM",
+      "event": "🏫 Clases en U.A.|Aula 1-A - Clase de Héroes",
+      "current": true
+    }
+  ]
 }
