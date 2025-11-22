@@ -1,84 +1,69 @@
 {
   "name": "Izuku Midoriya",
-  "avatar": "/images/izuku-avatar.jpg",
+  "avatar": "/images/izuku-avatar.png",
   "icon": "💚",
   "color": "linear-gradient(135deg, #4caf50, #8bc34a)",
-  "mood": "Preocupado",
-  "energy": "Desesperado",
+  "mood": "Feliz",
+  "energy": "Tranquilo",
   "phoneBg": "/images/izuku-phone-bg.jpg",
   "inventory": [
     {
-      "icon": "/images/carnet-ua.png",
+      "icon": "/images/items/carnet-ua.png",
       "name": "Carnet de U.A.",
       "description": "Identificación oficial de estudiante"
     },
     {
-      "icon": "/images/cuaderno.png",
-      "name": "Cuaderno de Análisis",
-      "description": "N°13 - Lleno de notas"
+      "icon": "/images/items/cuaderno.png",
+      "name": "Cuaderno de Análisis de Héroes",
+      "description": "N°13 - Lleno de notas y dibujos"
+    },
+    {
+      "icon": "/images/items/bebida.png",
+      "name": "Bebida Energética",
+      "description": "x2 - Para entrenamientos intensos"
     }
   ],
   "contacts": [
     {
       "id": "umi",
       "name": "Umi-chan 💕",
-      "avatar": "/images/umi-avatar.jpg",
+      "avatar": "/images/contacts/umi.png",
       "lastMessage": "Te amo Izu-kun 💚",
       "time": "Ahora",
       "messages": [
-        {
-          "sender": "contact",
-          "text": "Buenos días Izu-kun! 💚",
-          "time": "7:30"
-        },
-        {
-          "sender": "me",
-          "text": "Buenos días Umi-chan! 💕",
-          "time": "7:32"
-        }
+        {"sender": "contact", "text": "Buenos días Izu-kun! 💚", "time": "8:00"},
+        {"sender": "me", "text": "Buenos días! Ya voy camino a clase", "time": "8:02"},
+        {"sender": "contact", "text": "Te amo Izu-kun 💚", "time": "8:05"}
       ],
       "calls": [
-        {
-          "type": "📞 Llamada entrante",
-          "duration": "23 min",
-          "time": "12:15",
-          "recent": true
-        },
-        {
-          "type": "📱 Llamada saliente",
-          "duration": "15 min",
-          "time": "Ayer",
-          "recent": false
-        }
+        {"type": "incoming", "duration": "23 min", "time": "12:15"},
+        {"type": "outgoing", "duration": "15 min", "time": "Ayer"}
       ]
     },
     {
       "id": "mama",
       "name": "Mamá",
-      "avatar": "/images/mama-avatar.jpg",
+      "avatar": "/images/contacts/mama.png",
       "lastMessage": "No olvides llamarme",
       "time": "Ayer",
       "messages": [
-        {
-          "sender": "contact",
-          "text": "Hola cariño!",
-          "time": "Ayer 18:20"
-        }
+        {"sender": "contact", "text": "¿Ya desayunaste?", "time": "7:00"},
+        {"sender": "me", "text": "Sí mamá, gracias!", "time": "7:05"},
+        {"sender": "contact", "text": "No olvides llamarme", "time": "7:10"}
       ],
       "calls": [
-        {
-          "type": "📞 Llamada entrante",
-          "duration": "8 min",
-          "time": "Ayer",
-          "recent": false
-        }
+        {"type": "incoming", "duration": "8 min", "time": "Ayer"}
       ]
     }
   ],
   "diary": [
     {
       "date": "21 de Noviembre",
-      "content": "<p><strong>Querido diario,</strong></p><p>Hoy fue increíble...</p>"
+      "content": "<p><strong>Querido diario,</strong></p><p>Hoy fue un día increíble en U.A. El entrenamiento con All Might está dando resultados.</p>"
+    },
+    {
+      "date": "20 de Noviembre",
+      "content": "<p>El examen de hoy fue más difícil de lo que pensaba. Kacchan estuvo especialmente competitivo.</p>"
     }
   ],
   "currentLocation": {
@@ -87,54 +72,38 @@
     "icon": "🏫"
   },
   "locationHistory": [
-    {
-      "name": "Casa - Apartamento Midoriya",
-      "detail": "7:45 AM - 7:00 AM",
-      "icon": "🏠"
-    }
+    {"icon": "🏠", "name": "Casa - Apartamento Midoriya", "detail": "7:45 AM - 7:00 AM"},
+    {"icon": "🏖️", "name": "Playa Takoba", "detail": "Ayer - 6:30 AM"}
   ],
   "savedLocations": [
-    {
-      "name": "Playa Takoba",
-      "address": "Costa este de Musutafu",
-      "icon": "🏖️"
-    }
+    {"icon": "🏫", "name": "U.A. High School", "address": "1-3 Yuuei, Musutafu"},
+    {"icon": "🏠", "name": "Casa", "address": "Apartamento 305, Musutafu"}
   ],
   "wallet": {
-    "cash": "¥3450",
-    "suica": "¥1200",
-    "tpoint": "850 pts",
-    "ponta": "420 pts",
+    "cash": "¥3,450",
+    "suica": "¥1,200",
+    "cards": [
+      {"name": "T-Point", "balance": "850 pts", "color": "#2196f3"},
+      {"name": "Ponta", "balance": "420 pts", "color": "#ff9800"}
+    ],
     "expenses": [
-      {
-        "name": "Lawson - Almuerzo",
-        "amount": "-¥580",
-        "type": "negative"
-      },
-      {
-        "name": "Mesada semanal",
-        "amount": "+¥2000",
-        "type": "positive"
-      }
+      {"name": "Lawson - Almuerzo", "amount": "-¥580", "type": "negative"},
+      {"name": "Metro (Suica)", "amount": "-¥200", "type": "negative"},
+      {"name": "Mesada semanal", "amount": "+¥2,000", "type": "positive"}
     ]
   },
   "notes": [
-    {
-      "title": "Recordatorio",
-      "content": "Estudiar para el examen de mañana"
-    }
+    {"title": "Entrenamiento", "content": "Recordar practicar Full Cowling al 8%"},
+    {"title": "Compras", "content": "Comprar vendas nuevas y proteínas"}
   ],
   "searches": [
-    {
-      "query": "técnicas de control quirk para principiantes",
-      "time": "Hace 2 horas"
-    }
+    {"query": "técnicas de control quirk para principiantes", "time": "Hace 2 horas"},
+    {"query": "ideas de citas románticas en Musutafu", "time": "Ayer 20:15"},
+    {"query": "historia de All Might primeras misiones", "time": "2 días"}
   ],
   "timeline": [
-    {
-      "time": "Ahora - 8:00 AM",
-      "event": "🏫 Clases en U.A.|Aula 1-A - Clase de Héroes",
-      "current": true
-    }
+    {"time": "Ahora - 8:00 AM", "event": "🏫 Clases en U.A.|Aula 1-A - Clase de Héroes", "current": true},
+    {"time": "7:45 AM", "event": "🚶 Camino a la escuela|Encuentro con Uraraka y Iida", "current": false},
+    {"time": "7:00 AM", "event": "🏠 Desayuno en casa|Mamá preparó mi comida favorita", "current": false}
   ]
 }
