@@ -50,6 +50,13 @@ collections:
             widget: "object"
             required: false
             fields:
+              - label: "Personaje a actualizar"
+                name: "character"
+                widget: "select"
+                options: ["izuku", "harumi"]
+                default: "izuku"
+                hint: "¿A qué personaje se le aplicarán estos cambios?"
+                
               - {label: "Nuevo estado de ánimo", name: "mood", widget: "string", required: false}
               - {label: "Nuevo nivel de energía", name: "energy", widget: "string", required: false}
               
