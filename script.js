@@ -286,6 +286,49 @@ function updateContacts(contacts) {
   let html = '';
   
   contacts.forEach(contact => {
+function updatePhoneCalls(contacts) {
+  const llamadasTab = document.getElementById('llamadas-tab');
+  
+  let html = '<h4 class="section-title">📞 Historial de llamadas</h4>';
+  
+  // Recopilar TODAS las llamadas de TODOS los contactos
+  let allCalls = [];
+  contacts.forEach(contact => {
+    if (contact.calls && contact.calls.length > 0) {
+      contact.calls.forEach(call => {
+        allCalls.push({
+          ...call,
+          contactName: contact.name,
+          contactAvatar: contact.avatar
+        });
+      });
+    }
+  });
+  
+  // Ordenar por reciente
+  allCalls.sort((a, b) => (b.recent ? 1 : 0) - (a.recent ? 1 : 0));
+  
+  // Renderizar llamadas
+  allCalls.forEach(call => {
+    const avatarHtml = call.contactAvatar.startsWith('/images/') 
+      ? `<img src="${call.contactAvatar}" alt="${call.contactName}">`
+      : call.contactAvatar;
+    
+    html += `
+      <div class="call-item ${call.recent ? 'recent' : ''}">
+        <div class="contact-avatar">${avatarHtml}</div>
+        <div style="flex: 1;">
+          <strong ${call.recent ? 'style="color: #ff5fa2;"' : ''}>${call.contactName}</strong><br>
+          <small>${call.type}${call.duration ? ' · ' + call.duration : ''}</small>
+        </div>
+        <span class="call-time">${call.time}</span>
+      </div>
+    `;
+  });
+  
+  llamadasTab.innerHTML = html;
+}
+    
     const avatarHtml = contact.avatar.startsWith('/images/') 
       ? `<img src="${contact.avatar}" alt="${contact.name}">`
       : contact.avatar;
