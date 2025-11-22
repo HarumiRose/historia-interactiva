@@ -11,12 +11,13 @@
   
 <header>
   <div style="display: flex; align-items: center; gap: 20px;">
-    <!-- NUEVO: Botón selector de personaje -->
+    <!-- Botón selector de personaje -->
     <button id="character-selector-btn" onclick="toggleCharacterSelector()">
       <span id="current-character-icon">👤</span>
     </button>
     
     <div id="cap-info">Capítulo 1 — El Encuentro</div>
+  </div>
   
   <div id="nav-buttons">
     <button id="prev-btn" onclick="previousChapter()">← Anterior</button>
@@ -27,21 +28,7 @@
   
 <!-- NUEVO: Panel selector de personajes -->
 <div id="character-selector-panel">
-  <div class="character-option" onclick="selectCharacter('izuku')">
-    <div class="char-avatar izuku-color">I</div>
-    <div class="char-info">
-      <strong>Izuku Midoriya</strong>
-      <small>Deku • U.A. Clase 1-A</small>
-    </div>
-  </div>
-  
-  <div class="character-option" onclick="selectCharacter('harumi')">
-    <div class="char-avatar harumi-color">H</div>
-    <div class="char-info">
-      <strong>Harumi</strong>
-      <small>Tu personaje personalizado</small>
-    </div>
-  </div>
+  <!-- Se llenará dinámicamente desde JavaScript -->
 </div>
 
 <!-- Botón para mostrar/ocultar sidebar -->
