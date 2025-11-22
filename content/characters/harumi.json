@@ -1,27 +1,27 @@
 {
-  "name": "Harumi",
-  "avatar": "/images/harumi-avatar.jpg",
-  "icon": "💙",
+  "timeline": [],
+  "notes": [],
   "color": "linear-gradient(135deg, #9c27b0, #ba68c8)",
-  "mood": "Alegre",
-  "energy": "Energética",
-  "phoneBg": "/images/harumi-phone-bg.jpg",
-  "inventory": [],
-  "contacts": [],
   "diary": [],
+  "energy": "Energética",
+  "name": "Harumi Rose",
   "currentLocation": {
     "name": "U.A. High School",
     "detail": "Gimnasio Gamma",
     "icon": "🏫"
   },
-  "locationHistory": [],
+  "contacts": [],
+  "phoneBg": "/images/harumi-phone-bg.jpg",
+  "searches": [],
   "savedLocations": [],
+  "mood": "Alegre",
+  "icon": "💙",
+  "avatar": "/images/harumi.png",
   "wallet": {
     "cash": "¥4200",
     "suica": "¥1500",
     "expenses": []
   },
-  "notes": [],
-  "searches": [],
-  "timeline": []
+  "inventory": [],
+  "locationHistory": []
 }
