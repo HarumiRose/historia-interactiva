@@ -1,4 +1,4 @@
-
+//este es el script.js
 // ========== VARIABLES GLOBALES ==========
 let currentCharacter = null;
 let charactersData = {};
